@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  skaro_mysql:
+    container_name: skaro_mysql
+    image: mysql:5
+    ports:
+      - 5306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_DATABASE: skaro
+      MYSQL_USER: skaro
+      MYSQL_PASSWORD: skaro_pass
+    restart: always
+    volumes:
+      - ./docker/my.cnf:/etc/mysql/my.cnf
+      - ./docker/dbdata:/var/lib/mysql
+      - ./docker/backups/DBs:/backups
+    networks:
+      - skaro
+
+  web:
+    build: 
+      context: .
+    container_name: skaro_web
+    ports: 
+      - "80:9999"
+    depends_on:
+      - skaro_mysql
+    networks:
+      - skaro
+
+networks:
+  skaro:
+    driver: bridge

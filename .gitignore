@@ -1,0 +1,41 @@
+lib/
+.iml
+*.swp
+.idea/
+.*.swp
+*.pyc
+.virtual
+.ropeproject/
+.coverage/
+venv/
+web/.coverage
+web/htmlcov/
+static/media
+docker/backups/*
+docker/dbdata/*
+
+caseus_dev_sqlserver.txt
+caseus_web_dev.txt
+
+node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+/htmlcov
+dist
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
