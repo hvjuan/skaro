@@ -25,7 +25,7 @@ ACCESS_KEY = 'HSHAGjqsqHSnnHDW2812_&&&'
 # Web Server.
 HOST = '0.0.0.0'
 PORT = 9999
-URL = 'http://qn.co.ve'
+URL = 'http://jhv.nyc'
 
 PATHS = {
     '/': {
