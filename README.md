@@ -2,11 +2,25 @@
 
 This is a simple project that publishes API endpoints to create new randon or custom short URLs to existing, long URLs.
 
+To start locally, we can use docker-compose to avoid the hassle of requirements, specific servers and configuration files. It creates all the database files inside the **docker/dbdata** folder.
+
+```bash
+# cd to project directory.
+cd skaro
+# Build web server and project.
+docker-compose build
+# Start project.
+docker-compose up
+```
+All logic resides on the data models **db.url** and **db.logs** with the **api** module as the main source of the API handlers. The **db** module should have enough documentation as python docstrings to explain what they do and the reason why those technical decisions were made. 
+
+Currently, the url [jhv.nyc](https://jhv.nyc) is hosting this project for testing.
+
 ### Endpoints.
 
-All API access requires the header *Authentication*. Message me if needed.
+All API access requires the header *Authentication*. Message me if needed. Currently inside the **settings.py** file, there's a variable **URL** that contains the domain where the short URLs will use. As soon as a new short URL is created, it can be used with the given domain [jhv.nyc](https://jhv.nyc).
 
-*Get Short URL information.*
+* Get Short URL information.
 ```
 GET /api/url
   Returns all the information regarding the given short url.
@@ -45,7 +59,7 @@ Properties:
     ]
 }
 ```
-*Create a new short URL*
+* Create a new short URL
 ```
 POST /api/url
   Creates a new random or custom short URL.
@@ -55,4 +69,31 @@ POST body:
              the custom URL will be truncated.
 Returns:
   Complete URL path with new short link.
+```
+* Stats
+```
+GET /api/stats
+  Returns all the stats regarding the given short url.
+GET args: 
+  short_url: [REQUIRED] short url to query.
+Properties:
+  stats: basic stats of the given short URL.
+  historagram: list of visits per day. They show total visits despite coming from the
+               same ip or not.
+  ```
+  ```json
+  {
+    "stats": {
+        "url": "https://www.npmjs.com/package/react-native-device-info",
+        "short_url": "bsd",
+        "creation_date": "2019-10-20 22:55:12",
+        "times_visited": 2
+    },
+    "historagram": [
+        {
+            "visits": "2",
+            "date": "2019-10-20"
+        }
+    ]
+}
 ```
