@@ -70,9 +70,9 @@ POST body:
 Returns:
   Complete URL path with new short link.
 ```
-* Stats
+* Stats: short_url
 ```
-GET /api/stats
+GET /api/stats/url
   Returns all the stats regarding the given short url.
 GET args: 
   short_url: [REQUIRED] short url to query.
@@ -96,4 +96,19 @@ Properties:
         }
     ]
 }
+```
+* Stats: total visits per short url.
+```
+GET /api/stats/totals
+  Returns all the stats regarding the given short url.
+```
+```json
+[
+    {
+        "paypal": 122
+    },
+    {
+        "2cz8kMR": 23
+    }
+]
 ```
