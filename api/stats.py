@@ -37,7 +37,4 @@ class Total(base_api.Api):
 
     @auth.header_auth
     def _get(self):
-        x = log_db.Log.totals()
-        import ipdb
-        ipdb.set_trace()
-        return x
+        return log_db.Log.totals()
