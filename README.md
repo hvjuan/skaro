@@ -2,6 +2,10 @@
 
 This is a simple project that publishes API endpoints to create new randon or custom short URLs to existing, long URLs.
 
+This project uses a very simple Python 3 stack:
+* [Cherrypy](https://cherrypy.org)
+* [SQLAlchemy](https://sqlalchemy.org)
+
 To start locally, we can use docker-compose to avoid the hassle of requirements, specific servers and configuration files. It creates all the database files inside the **docker/dbdata** folder.
 
 ```bash
@@ -12,9 +16,12 @@ docker-compose build
 # Start project.
 docker-compose up
 ```
+
+It is very important to wait for the servers to load before we run the db init script **http://my_domain/init_db**. This script runs SQLAlcemy's alembic to sync db models. We may need to run it a couple of times till the success message is displayed on the browser: **Database is ready: 0**.
+
 All logic resides on the data models **db.url** and **db.logs** with the **api** module as the main source of the API handlers. The **db** module should have enough documentation as python docstrings to explain what they do and the reason why those technical decisions were made. 
 
-Currently, the url [jhv.nyc](https://jhv.nyc) is hosting this project for testing.
+Currently, the url [jhv.nyc](https://jhv.nyc) is hosting this project for testing. Currently, one of the custom short urls **rh**, will redirect to http://redhat.com. [jhv.nyc/rh](https://jhv.nyc/rh).
 
 ### Endpoints.
 
