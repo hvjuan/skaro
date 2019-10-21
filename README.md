@@ -21,7 +21,7 @@ It is very important to wait for the servers to load before we run the db init s
 
 All logic resides on the data models **db.url** and **db.logs** with the **api** module as the main source of the API handlers. The **db** module should have enough documentation as python docstrings to explain what they do and the reason why those technical decisions were made. 
 
-Currently, the url [jhv.nyc](https://jhv.nyc) is hosting this project for testing. Currently, one of the custom short urls **rh**, will redirect to http://redhat.com. [jhv.nyc/rh](https://jhv.nyc/rh).
+Currently, the url [jhv.nyc](https://jhv.nyc) is hosting this project for testing. Currently, one of the custom short urls **rh**, will redirect to redhat.com. [http://jhv.nyc/rh](http://jhv.nyc/rh).
 
 ### Endpoints.
 
