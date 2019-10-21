@@ -35,6 +35,18 @@ class LogTest(base_test.TestBasis):
         # Stats.
         self.assertEqual('http://google.com', stats.get('stats').get('url'))
 
+    def test_totals(self):
+        # Create link to have proper IDs.
+        url_db.Url.create('http://google.com', 'test')
+        # Get object from db and create a couple of logs from different ips.
+        url = url_db.Url.get('http://google.com')
+        log_db.Log.add(url.id, '192.168.192.200')
+        log_db.Log.add(url.id, '192.168.192.201')
+        log_db.Log.add(url.id, '192.168.192.202')
+        # Test totals.
+        totals = log_db.Log.totals()
+        self.assertEqual([{'test': 3}], totals)
+
 
 if __name__ == '__main__':
     unittest.main()

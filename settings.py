@@ -30,7 +30,7 @@ URL = 'http://jhv.nyc'
 PATHS = {
     '/': {
         'tools.sessions.on': True,
-        'tools.sessions.name': 'Gallifrey',
+        'tools.sessions.name': 'Skaro',
         'request.show_tracebacks': False,
         'tools.staticdir.root': os.path.abspath(os.getcwd())
     },
@@ -38,6 +38,9 @@ PATHS = {
     # APIs.
     '/api': {
         'tools.response_headers.on': True,
+        'tools.sessions.on': True,
+        'tools.encode.on': True,
+        'tools.encode.encoding': 'utf-8',
         'tools.response_headers.headers': [
             ('Content-Type', 'application/json')],
         'request.dispatch': cherrypy.dispatch.MethodDispatcher(),

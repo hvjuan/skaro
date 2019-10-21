@@ -11,6 +11,12 @@ class MethodNotAcceptedException(Exception):
     """Raised if an unknown method is requested."""
 
 
+def handle_error():
+    cherrypy.response.status = 500
+    cherrypy.response.body = b'Check your parameters according to the docs.'
+
+
+# @cherrypy.config(**{'request.error_response': handle_error})
 class Api:
     """Base API class.
 

@@ -20,16 +20,16 @@ services:
     networks:
       - skaro
 
-  web:
-    build: 
-      context: .
-    container_name: skaro_web
-    ports: 
-      - "80:9999"
-    depends_on:
-      - skaro_mysql
-    networks:
-      - skaro
+#  web:
+#    build: 
+#      context: .
+#    container_name: skaro_web
+#    ports: 
+#      - "80:9999"
+#    depends_on:
+#      - skaro_mysql
+#    networks:
+#      - skaro
 
 networks:
   skaro:

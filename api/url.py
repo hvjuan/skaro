@@ -30,6 +30,7 @@ class Url(base_api.Api):
         else:
             return link
 
+    @auth.header_auth
     def _post(self, url, short_url=None):
         """Creates a new, short URL from a given full URL.
 

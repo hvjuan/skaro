@@ -68,6 +68,20 @@ class Log(ModelBase):
                                 for x, y in response]
             }
 
+    @classmethod
+    def totals(cls):
+        """Get total of visits ordered by short url.
+
+        TODO(juan) No pagination is done. This is just for demo purposes.
+
+        Returns:
+            list of short urls with number of individual visits.
+        """
+        with db_utils.session_scope() as session:
+            urls = session.query(url_db.Url).all()
+            # Get all logs per url.
+            return [{x.short_url: len(x.logs)} for x in urls]
+
     def to_dict(self):
         """Returns a dictionary representation od the current instance."""
         return {
